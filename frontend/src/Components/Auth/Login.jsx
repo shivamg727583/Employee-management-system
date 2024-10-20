@@ -1,12 +1,11 @@
 import { useForm } from "react-hook-form";
 
-function Login() {
+function Login({handleLogin}) {
   const { register, handleSubmit, watch, reset } = useForm();
 
   const onSubmit = (data) => {
-    // handleSubmit already prevents the default form submission behavior
-    console.log(data.email);  // you can access the email like this
-    console.log(data.password);  // and password like this
+    handleLogin(data.email,data.password);
+    reset();
   };
 
   return (
