@@ -2,8 +2,8 @@
    const  employees = [
       {
         "id": 1,
-        "name": "Alice Johnson",
-        "email": "alice.johnson@example.com",
+        "name": "Karan",
+        "email": "emp1@gmail.com",
         "password": "123",
         "tasks": [
           {
@@ -40,8 +40,8 @@
       },
       {
         "id": 2,
-        "name": "Bob Smith",
-        "email": "bob.smith@example.com",
+        "name": "Ram",
+        "email": "emp2@gmail.com",
         "password": "123",
         "tasks": [
           {
@@ -88,8 +88,8 @@
       },
       {
         "id": 3,
-        "name": "Charlie Brown",
-        "email": "charlie.brown@example.com",
+        "name": "Mohan",
+        "email": "emp3@gmail.com",
         "password": "123",
         "tasks": [
           {
@@ -126,8 +126,8 @@
       },
       {
         "id": 4,
-        "name": "Diana Evans",
-        "email": "diana.evans@example.com",
+        "name": "Sohan",
+        "email": "emp4@gmail.com",
         "password": "123",
         "tasks": [
           {
@@ -164,8 +164,8 @@
       },
       {
         "id": 5,
-        "name": "Ethan Davis",
-        "email": "ethan.davis@example.com",
+        "name": "Nidhi",
+        "email": "emp@gmail.com",
         "password": "123",
         "tasks": [
           {
@@ -202,7 +202,7 @@
       }
     ]
 
-   const admin = [{
+   const admin = {
       "id": 1001,
       "name": "Admin User",
       "email": "admin@gmail.com",
@@ -210,11 +210,23 @@
      
       
     }
-  ]
+  
   
   export const setLocalStorage =()=>{
-    localStorage.setItem('employees', JSON.stringify(employees));
+    const employeesWithTaskCount = employees.map(employee => {
+      const taskCount = {
+        active: employee.tasks.filter(task => task.active).length,
+        newTask: employee.tasks.filter(task => task.newTask).length,
+        completed: employee.tasks.filter(task => task.completed).length,
+        failed: employee.tasks.filter(task => task.failed).length
+      };
+      return { ...employee, taskCount };
+    });
+  
+    localStorage.setItem('employees', JSON.stringify(employeesWithTaskCount));
     localStorage.setItem('admin', JSON.stringify(admin));
+   
+
 
   }
   export const getLocalStorage = ()=>{

@@ -10,10 +10,10 @@ function Login({handleLogin}) {
 
   return (
     <div className='flex items-center justify-center bg-[#1C1C1C] h-screen'>
-      <div className="px-20 bg-zinc-800 w-full md:w-1/2 h-full flex items-center flex-col gap-6 justify-center">
+      <div className="px-20 bg-zinc-800 w-full md:w-1/2 h-full flex items-center flex-col gap-6 justify-center  ">
         <h1 className="text-4xl font-bold text-center mb-4 text-white">Login</h1>
 
-        <form className='flex items-center flex-col gap-6 w-full' onSubmit={handleSubmit(onSubmit)}>
+        <form className='flex items-center flex-col gap-6 w-full border-4 rounded-xl p-10 border-[#973243]' onSubmit={handleSubmit(onSubmit)}>
           <input 
             type="email"  
             {...register('email')}  
